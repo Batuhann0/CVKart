@@ -1,0 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace CVEntityProje
+{
+    public partial class MesajDetay : System.Web.UI.Page
+    {
+        CVEntityEntities db = new CVEntityEntities();
+
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            int x = int.Parse(Request.QueryString["ID"]);
+
+            var mesaj = db.Tbl_ILETISIM.Find(x);
+
+            txtmesaj.Text = mesaj.MESAJ;   
+        }
+    }
+}
